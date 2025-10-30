@@ -19,6 +19,11 @@ public class UsuarioCllbckImpl extends UnicastRemoteObject implements UsuarioCll
     }
 
     @Override
+    public void mostrarClientesRegistrados(String clientes) throws RemoteException {
+        System.out.println("Clientes registrados en el servidor: \n" + clientes);
+    }
+
+    @Override
     public void ping() throws RemoteException {
         // Confirma que el cliente sigue accesible
     }

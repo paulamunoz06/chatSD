@@ -44,18 +44,6 @@ public class ControladorServidorChatImpl extends UnicastRemoteObject implements 
     }
 
     @Override
-    public void mostrarClientesRegitrados() throws RemoteException
-    {
-        //Imprime los nicknames (llaves en el hasmap) de los usarios
-        this.usuarios.forEach((llave,valor)->{
-            int i = 0;
-            System.out.println("Usuario " + i +": + " + llave);
-            i++;
-        }
-        );
-    }
-
-    @Override
     public void salir(String nickname) throws RemoteException 
     {
         //Método para que un usuario salga del chat
@@ -107,12 +95,19 @@ public class ControladorServidorChatImpl extends UnicastRemoteObject implements 
     }
 
     @Override
-    public void mostrarClientesRegistrados() throws RemoteException {
-        System.out.println("Clientes registrados:");
+    public void clientesRegistrados(String nickname) throws RemoteException
+    {
+        // Construye una variable String con los nicknames (llaves en el hashmap) de los usuarios
+        StringBuilder sb = new StringBuilder();
         int i = 0;
-        for (String key : usuarios.keySet()) {
-            System.out.println("Usuario " + i + ": " + key);
+        for (String llave : this.usuarios.keySet()) {
+            sb.append("Usuario ").append(i).append(": ").append(llave);
+            if (i < this.usuarios.size() - 1) {
+                sb.append(System.lineSeparator());
+            }
             i++;
         }
+        String usuariosStr = sb.toString();
+        usuarios.get(nickname).mostrarClientesRegistrados(usuariosStr);
     }
 }

@@ -7,6 +7,7 @@ public interface UsuarioCllbckInt extends Remote
 {	
     public void notificar(String mensaje, int cantidadUsuarios) throws RemoteException;
     public void ping() throws RemoteException;
+    public void mostrarClientesRegistrados(String clientes) throws RemoteException;
 }
 
 

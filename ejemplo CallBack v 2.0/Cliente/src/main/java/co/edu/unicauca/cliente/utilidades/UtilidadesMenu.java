@@ -19,7 +19,7 @@ public class UtilidadesMenu {
                     enviarMensajeChatGrupal(servidor);
                     break;
                 case 2:
-                    mostrarClientesRegitrados(servidor);
+                    mostrarClientesRegistrados(servidor,nickname);
                     break;
                 case 3:
                     enviarMensajeAUsuario(nickname, servidor);
@@ -46,12 +46,12 @@ public class UtilidadesMenu {
         } 
     }
 
-    public void mostrarClientesRegitrados(ControladorServidorChatInt servidor){
+    public void mostrarClientesRegistrados(ControladorServidorChatInt servidor,String nickname){
         try{
             System.out.println("============Clientes Registrados============");
-            servidor.mostrarClientesRegitrados();
+            servidor.clientesRegistrados(nickname);
         }catch(Exception e){
-            System.out.println("No se pudo ejecutar el metodo remoto mostrarClietntesRegistrados...");
+            System.out.println("No se pudo ejecutar el metodo remoto clientesRegistrados...");
             System.out.println(e.getMessage());
         } 
     }
